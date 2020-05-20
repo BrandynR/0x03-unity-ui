@@ -1,5 +1,7 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,6 +9,12 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     private int score = 0;
     public int health = 5;
+    public Text scoreText;
+    public Text healthText;
+    public Image winLoseBG;
+    public Text winLoseText;
+    public GameObject winLose;
+    private bool isCoroutine = true;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -26,25 +34,73 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Pickup"))
         {
             Destroy(other.gameObject);
-            score += 1;
-            Debug.Log("Score: " + score);
+            SetScoreText();
+            //Debug.Log("Score: " + score);
         }
         else if (other.CompareTag("Trap"))
         {
-            health -= 1;
-            Debug.Log("Health: " + health);
+            SetHealthText();
+            //Debug.Log("Health: " + health);
         }
         else if (other.CompareTag("Goal"))
         {
-        Debug.Log("You win!");
+            SetWin();
+            StartCoroutine(LoadScene(3f));
+            //Debug.Log("You win!");
         }
     }
      void Update()
     {
-        if (health == 0)
+        if (health == 0 && isCoroutine)
         {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene("maze");
+           // Debug.Log("Game Over!");
+            SetGameOver();
+            StartCoroutine(LoadScene(3f));
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    //Adds +1 to player's score window
+    void SetScoreText()
+    {
+        score++;
+        scoreText.text = "Score: " + score.ToString();
+    }
+
+    //Subtracts -1 from player's health window
+    void SetHealthText()
+    {
+        health--;
+        healthText.text = "Health: " + health.ToString();
+    }
+
+    //Displays You Win! when player reaches goal
+    void SetWin()
+    {
+        winLose.SetActive(true);
+        winLoseBG.color = Color.green;
+        winLoseText.text = "You win!";
+        winLoseText.color = Color.black;
+    }
+
+    //Displays Game Over! when player's health reaches 0
+    void SetGameOver()
+    {
+        winLose.SetActive(true);
+        winLoseBG.color = Color.red;
+        winLoseText.text = "Game Over!";
+        winLoseText.color = Color.white;
+    }
+
+    //Delays the game from restarting right away after win/loss
+    IEnumerator LoadScene(float seconds)
+    {
+        isCoroutine = false;
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene("maze");
+        isCoroutine = true;
     }
 }
