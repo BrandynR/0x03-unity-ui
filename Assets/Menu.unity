@@ -777,7 +777,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 956490412}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1733131821}
+        m_MethodName: PlayMaze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &956490412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,7 +1125,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1197399968}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1733131821}
+        m_MethodName: QuitMaze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1197399968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1238,6 +1260,7 @@ GameObject:
   - component: {fileID: 1406420553}
   - component: {fileID: 1406420552}
   - component: {fileID: 1406420551}
+  - component: {fileID: 1406420554}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1309,6 +1332,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1406420554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406420550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3db189f3eedf47ea8f1768f10597fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapMat: {fileID: 2100000, guid: 548ed18871ec44b04beb32cd24de28dd, type: 2}
+  goalMat: {fileID: 2100000, guid: c329c28d19f6a4fec86998490a9ee611, type: 2}
+  colorblindMode: {fileID: 942140260}
 --- !u!1 &1495671724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1733131820}
+  - component: {fileID: 1733131821}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1419,6 +1458,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1733131821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733131819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3db189f3eedf47ea8f1768f10597fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapMat: {fileID: 2100000, guid: 548ed18871ec44b04beb32cd24de28dd, type: 2}
+  goalMat: {fileID: 2100000, guid: c329c28d19f6a4fec86998490a9ee611, type: 2}
+  colorblindMode: {fileID: 942140260}
 --- !u!1 &1803729809
 GameObject:
   m_ObjectHideFlags: 0
